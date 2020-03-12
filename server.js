@@ -4,10 +4,15 @@ const  PORT = process.env.PORT|| 5000
 const cors = require('cors')
 const morgan = require('morgan')
 const app = express()
+
+
+
+// all router 
+
 const userRouter= require('./router/userRouter')
 const clientRouter = require('./router/clientRouter')
-
-
+const employeeRouter = require('./router/employeeRouter')
+const shiftRouter= require('./router/shiftRouter')
 
 
 
@@ -33,6 +38,8 @@ app.use(express.json())
 app.use(morgan('dev'))
 app.use(userRouter)
 app.use(clientRouter)
+app.use(employeeRouter)
+app.use(shiftRouter)
 
 
 

@@ -14,7 +14,7 @@ const employeeValidator =(info)=>{
     if(!info.address){
         err.address="Address is Requird"
     }
-    if(info.joinDate){
+    if(!info.joinDate){
         err.joinDate="Join Date is Required "
     }
     if(!info.phoneNumber){

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const  clientSchema = new Schema ({
+const  employeeSchema = new Schema ({
     firstName:String,
     lastName:String,
     expertise:String,
@@ -12,5 +12,5 @@ const  clientSchema = new Schema ({
     profilePicture:String
 })
 
-const clientModel = mongoose.model('clientModel', (clientSchema))
-module.exports = clientModel
+const employeeModel = mongoose.model('employeeModel', (employeeSchema))
+module.exports = employeeModel
