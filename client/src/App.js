@@ -1,93 +1,50 @@
-import React from 'react';
-import  'antd/dist/antd.min.css'
-import './App.css';
-import { Layout, Menu, Breadcrumb } from 'antd';
-import {
-  DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+import React from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+import "assets/css/nucleo-icons.css";
+import "assets/scss/blk-design-system-react.scss?v=1.0.0";
+import "assets/demo/demo.css";
+
+import Index from "views/Index.jsx";
+// import LandingPage from "views/examples/LandingPage.jsx";
+import RegisterPage from "views/examples/RegisterPage.jsx";
+import LoginPage from "views/examples/LoginPage.jsx";
 
 
-class  App extends React.Component  {
-  state = {
-    collapsed: false,
-  };
 
-  onCollapse = collapsed => {
-    console.log(collapsed);
-    this.setState({ collapsed });
-  };
+import { createBrowserHistory } from "history";
+import AdminLayout from "./deshbord/layouts/Admin/Admin";
 
-  render() {
-    return (
-      <div>
-        
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-          <div className="logo" />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1">
-              <PieChartOutlined />
-              <span>Option 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <DesktopOutlined />
-              <span>Option 2</span>
-            </Menu.Item>
-            <SubMenu
-              key="sub1"
-              title={
-                <span>
-                  <UserOutlined />
-                  <span>User</span>
-                </span>
-              }
-            >
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu
-              key="sub2"
-              title={
-                <span>
-                  <TeamOutlined />
-                  <span>Team</span>
-                </span>
-              }
-            >
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9">
-              <FileOutlined />
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
-            </Breadcrumb>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              Bill is a cat.
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
-        </Layout>
-      </Layout>
-      </div>
-    )
+
+import "./deshbord/assets/scss/black-dashboard-react.scss";
+import "./deshbord/assets/demo/demo.css";
+import "./deshbord/assets/css/nucleo-icons.css";
+import './app.css'
+import { useEffect } from "react";
+
+class App extends React.Component{
+  componentDidMount(){
+    
   }
-   
+  render(){
+  return(
+  <BrowserRouter>
+    <Switch>
+      <Route
+        path="/register-page"
+        render={props => <RegisterPage {...props} />}
+      />
+      <Route
+        path="/login-page"
+        render={props => <LoginPage {...props} />}
+      />
+      <Route path="/admin" render={props => <AdminLayout {...props} />} />
+      <Redirect from="/" to="/login-page" />
+    </Switch>
+  </BrowserRouter>
+  )
+  }
 }
 
-export default App;
+
+export default App

@@ -55,7 +55,7 @@ const register = (req, res) => {
 const login = (req, res) => {
     const loginValidate = validator.login(req.body)
     if (!loginValidate.isValid) {
-       return res.status(400).json({err:loginValidate.err})
+       return res.status(400).json(loginValidate.err)
         
     } else {
         userModel.findOne({ email: req.body.email })

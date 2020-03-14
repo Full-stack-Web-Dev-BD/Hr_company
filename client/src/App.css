@@ -1,9 +1,19 @@
-#components-layout-demo-side .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
+.fixed-top {
+    height: 100px;
+}
+.nav-tabs > .nav-item > .nav-link.active {
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+.placeColorBlack{
+    color:black !important;
 }
 
-.site-layout .site-layout-background {
-  background: #fff;
+.register-page .squares, .register-page .square, .section.section-signup .squares, .section.section-signup .square {
+    background: #27293D !important;
+    background: -webkit-gradient(linear, left bottom, left top, from(#27293D), to(#27293D)) !important;
+    background: linear-gradient(0deg, #27293D, #27293D 100%) !important;
 }

@@ -18,11 +18,6 @@ const registervalidator =(info)=>{
     } else if(info.password.length <6){
         err.password="Password Length should be gatter then 6 Charecter"
     }
-    if(!info.confirmPassword){
-        err.confirmPassword="Confirm Password Requird"
-    }else  if(info.confirmPassword !== info.password){
-        err.confirmPassword="Both Password Are Different"
-    }
     return{
         err:err,
         isValid:Object.keys(err).length===0
