@@ -13,6 +13,8 @@ const DeleteModal = (props) => {
   const toggle = () => setModal(!modal);
   const deleteDone=()=>{
     props.deleteFunction(props.flight._id)
+    toggle()
+    window.location.href='/admin/all-client'
   
   }
   return (

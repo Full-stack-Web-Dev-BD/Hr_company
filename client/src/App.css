@@ -17,3 +17,8 @@
     background: -webkit-gradient(linear, left bottom, left top, from(#27293D), to(#27293D)) !important;
     background: linear-gradient(0deg, #27293D, #27293D 100%) !important;
 }
+
+
+.flexbox-fix{
+    display: none !important
+}

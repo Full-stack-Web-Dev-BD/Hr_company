@@ -9,7 +9,8 @@ const  employeeSchema = new Schema ({
     phoneNumber:String,
     email:String,
     hourlyRate:String,
-    profilePicture:String
+    profilePicture:String,
+    picturePath:String
 })
 
 const employeeModel = mongoose.model('employeeModel', (employeeSchema))

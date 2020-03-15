@@ -1,9 +1,6 @@
 import Add from './views/add/Add'
-import EditInternationalFlight from './views/EditFlight/EditInternationalFlight'
-import GenerateInvoice from './views/GenerateInvoice'
-import FlightAnalytics from './views/FlightAnalytics'
-import EditDomesticFlight from "./views/EditFlight/EditDomesticFlight.js";
-
+import AllClient from './views/EditFlight/Client/AllClient'
+import AllEmployee from './views/EditFlight/Employee/AllEmployee'
 // add 
 // all client 
 // all employee
@@ -18,36 +15,35 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/edit-international-flight",
-    name: "Edit International Flight",
+    path: "/all-client",
+    name: "All Clientt",
     rtlName: "قائمة الجدول",
     icon: "tim-icons icon-pencil",
-    component: EditInternationalFlight,
+    component: AllClient,
     layout: "/admin"
   },
   {
-    path: "/edit-domestic-flight",
-    name: "Edit Domestic Flight",
-    rtlName: "قائمة الجدول",
+    path: "/all-employee",
+    name: "All Employee",
     icon: "tim-icons icon-pencil",
-    component: EditDomesticFlight,
+    component: AllEmployee,
     layout: "/admin"
   },
-  {
-    path: "/invoice-generator",
-    name: "Invoice Generator",
-    rtlName: "قائمة الجدول",
-    icon: "tim-icons icon-tap-02",
-    component: GenerateInvoice,
-    layout: "/admin"
-  },
-  {
-    path: "/flight-analytics",
-    name: "Flight Analytics",
-    rtlName: "قائمة الجدول",
-    icon: "tim-icons icon-send",
-    component: FlightAnalytics,
-    layout: "/admin"
-  }
+  // {
+  //   path: "/invoice-generator",
+  //   name: "Invoice Generator",
+  //   rtlName: "قائمة الجدول",
+  //   icon: "tim-icons icon-tap-02",
+  //   component: GenerateInvoice,
+  //   layout: "/admin"
+  // },
+  // {
+  //   path: "/flight-analytics",
+  //   name: "Flight Analytics",
+  //   rtlName: "قائمة الجدول",
+  //   icon: "tim-icons icon-send",
+  //   component: FlightAnalytics,
+  //   layout: "/admin"
+  // }
 ];
 export default routes;

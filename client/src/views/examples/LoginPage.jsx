@@ -24,7 +24,7 @@ export default class LoginPage extends PureComponent {
       if(res.data.token){
         console.log(res.data.token)
         window.localStorage.setItem('token', res.data.token)
-        window.location.href='/admin'
+        window.location.href='/admin/add'
       }
       // window.location.href='/admin'
     })
@@ -58,7 +58,7 @@ export default class LoginPage extends PureComponent {
                {this.state.err.massage?
               <p className="text-danger">{this.state.err.massage}</p>:''
               }
-              <Button onClick={this.submitHandler} color="">Sign Up</Button>
+              <Button onClick={this.submitHandler} color="">Sign in</Button>
               <p>Not registered Yet  ? Go to <Link to='/register-page'> Register</Link>  page </p>
             </form>
            

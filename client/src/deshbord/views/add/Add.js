@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {  } from 'reactstrap';
 import classnames from 'classnames';
-
 import {
   TabContent, 
   TabPane, 
@@ -58,7 +57,8 @@ const Add =(props)=> {
                 <TabPane tabId="1">
                     <Row>
                         <Col sm="12">
-                            <Client/>
+                            {/* <Client/> */}
+                        <Employee/>
                         </Col>
                     </Row>          
                 </TabPane>

@@ -1,6 +1,5 @@
 import React from "react";
-import EditDemosticFlight from './EditDomesticFlightModal'
-import EditInternationalModal from './EditInternationalModal'
+import EditEmployee from './EditEmployee'
 import {
   Card,
   CardHeader,
@@ -16,31 +15,24 @@ import deleteModal from  './DeleteModal'
 import { useEffect , useState } from "react";
 import Axios from "axios";
 import DeleteModal from "./DeleteModal";
-const tipStyle={
-    color: "white",
-    fontSize: "10px",
-    background: "#3578E5",
-    borderRadius: "3px",
-    marginLeft:"5px",
-    padding: "0  7px",
-    cursor:"pointer"
-}
-const EditFlight =()=>{
-  const [internationalFlieht , setInternationalFlieht]=useState([])
-    const [domesticFlight , setDomesticFlieht]=useState([])
+
+const AllEmployee =()=>{
+  const [allEmployee , setallEmployee]=useState([])
     useEffect(()=>{
-      Axios.get('http://localhost:5000/api/get-international-flight')
-      .then(flight=>{
-        setInternationalFlieht(flight.data.flight)
-      })
-      .catch(err=>{
-        console.log(err)
-      })
-    } , [])
-    useEffect(()=>{
-      Axios.get('http://localhost:5000/api/get-domestic-flight')
-      .then(flight=>{
-        setDomesticFlieht(flight.data)
+      Axios.get('http://localhost:5000/all-Employee')
+      .then(res=>{
+        if(res.data.length<1){
+          let ex=[
+            {ex:''},
+            {ex:''},
+            {ex:''}
+          ]
+          console.log('done')
+          return setallEmployee(ex)
+        }
+        if(res.data.length>0){
+          return setallEmployee(res.data)
+        }
       })
       .catch(err=>{
         console.log(err)
@@ -61,21 +53,10 @@ const EditFlight =()=>{
       }
       return x
     }
-    
-    const deleteInternationalFlight =(id)=>{
-      Axios.get('http://localhost:5000/api/delete-international-flight/'+id)
+    const DeleteEmployee =(id)=>{
+      Axios.get('http://localhost:5000/delete-employee/'+id)
       .then(flight=>{
-        window.location.href=('/admin/edit-international-flight')
-
-      })
-      .catch(err=>{
-        console.log(err)
-      })
-    }
-    const deleteDomesticFlight =(id)=>{
-      Axios.get('http://localhost:5000/api/delete-domestic-flight/'+id)
-      .then(flight=>{
-        window.location.href=('/admin/edit-domestic-flight')
+        // window.location.href=('/admin/edit-domestic-flight')
       })
       .catch(err=>{
         console.log(err)
@@ -84,7 +65,6 @@ const EditFlight =()=>{
     return (
       <>
         <div className="content">
-         
           <Row>
             <Col md="12">
               <Card>
@@ -96,36 +76,32 @@ const EditFlight =()=>{
                     <Table className="tablesorter  pb-5 mb-5" responsive>
                       <thead className="text-success">
                         <tr>
-                          <th>Added time</th>
-                          <th>Tail Number </th>
-                          <th>Date & Time  </th>
-                          <th>Flight ID </th>
+                          <th>Name</th>
+                          <th>Picture</th>
+                          <th>Join Date  </th>
+                          <th>Phone Number </th>
                           <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {internationalFlieht.map((single)=>{
+                        {allEmployee.map((single)=>{
                        return(
-                         
-                          <tr>
-                            <td> {single.addedTime} </td>
-                            <td > {single.tailNumber} </td>
-                            <td > {single.dateTime} </td>
-                            <td > {single._id} 
-                                <span title="Flight situation" style={tipStyle}>
-                                    {iterator(single)}
-                                </span> 
-                            </td>
+                          <tr style={{backgroundColor:`${single.color}`, cursor:"pointer"}} >
+                            {console.log(single)}
+                            <td> {single.firsName}<span> {single.lastName} </span> </td>
+                            <td > <img src={'./'+single.picturePath}/> <span>{console.log(single.picturePath)}</span> </td>
+                            <td > {single.joinDate} </td>
+                            <td > {single.phoneNumber} </td>
                             <td > <div class="dropdown">
                                 <a cla ss="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <Button color="success" size="sm">Action</Button>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style={{background:"#3578E5" }}>
                                   <span  class="dropdown-item " style={{color:"white"}}>
-                                    <EditInternationalModal   flight={single}/>
+                                    <EditEmployee   Employee={single}/>
                                   </span>
                                   <a class="dropdown-item "style={{color:"white" , fontSize:"18px"}} href="#">
-                                  <DeleteModal flight={single} deleteFunction={deleteInternationalFlight}/>
+                                  <DeleteModal style={{display:"none"}} flight={single} deleteFunction={DeleteEmployee}/>
                                   </a>
                                 </div>
                               </div>
@@ -146,4 +122,4 @@ const EditFlight =()=>{
     );
 }
 
-export default EditFlight;
+export default AllEmployee;
