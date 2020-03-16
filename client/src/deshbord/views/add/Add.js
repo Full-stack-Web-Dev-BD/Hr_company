@@ -58,7 +58,8 @@ const Add =(props)=> {
                     <Row>
                         <Col sm="12">
                             {/* <Client/> */}
-                        <Employee/>
+                            {/* <Employee/> */}
+                          <Shift/>
                         </Col>
                     </Row>          
                 </TabPane>

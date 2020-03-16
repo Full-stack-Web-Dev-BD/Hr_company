@@ -14,7 +14,7 @@ const DeleteModal = (props) => {
   const deleteDone=()=>{
     props.deleteFunction(props.flight._id)
     toggle()
-    window.location.href='/admin/all-client'
+    window.location.href='/admin/all-employee'
   
   }
   return (
@@ -25,12 +25,12 @@ const DeleteModal = (props) => {
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>
           <h2 className="text-success">
-          Delete Flight
+          Delete Employee
           </h2>
         </ModalHeader>
         <ModalBody>
           <h5 className="text-dark">
-          Are You Sure To Delete This  Flight ?
+          Are You Sure To Delete This  Employee ?
           </h5>
         </ModalBody>
         <ModalFooter>

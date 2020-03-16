@@ -3,15 +3,15 @@ import React, { useState ,useEffect} from 'react';
 import { Button, Modal, ModalBody, ModalFooter,Row, Col, Label, Input, FormGroup, Form } from 'reactstrap';
 import './modal.css'
 import Axios from 'axios';
-const EditEmployee = (props) => {
+const EditShift = (props) => {
     const [open, setOpen] = useState(false);
     const [focusAfterClose, setFocusAfterClose] = useState(true);
-    const [EmployeeInfo, setEmployeeInfo]=useState({})
-    const Employee= props.Employee
+    const [ShiftInfo, setShiftInfo]=useState({})
+    const Shift= props.Shift
     const [doneBTN, setDoneBTN]= useState(' Done')
 
   useEffect(()=>{
-    setEmployeeInfo(Employee)
+    setShiftInfo(Shift)
   },[])
 
     const toggle = () => setOpen(!open);
@@ -19,19 +19,25 @@ const EditEmployee = (props) => {
         setFocusAfterClose(JSON.parse(value));
     }
     const changeHandler=(event)=>{
-      console.log(EmployeeInfo)
-      setEmployeeInfo({...EmployeeInfo, 
+      console.log(ShiftInfo)
+      setShiftInfo({...ShiftInfo, 
         [event.target.name ]:event.target.value
       })
     }
+
+    const selectHandler= (event)=>{
+      setShiftInfo({...ShiftInfo, 
+        completed:event.target.value==='on'?true:false
+      })
+    }
     const submitHandler= ()=>{
-      setDoneBTN('Update Employee  . . .')
-      console.log(EmployeeInfo)
-      Axios.post('http://localhost:5000/update-Employee/'+Employee._id , EmployeeInfo)
-      .then(Employee=>{
+      setDoneBTN('Update Shift  . . .')
+      console.log(ShiftInfo)
+      Axios.post('http://localhost:5000/update-Shift/'+Shift._id , ShiftInfo)
+      .then(Shift=>{
         setTimeout(() => {
           setDoneBTN('Done')
-          window.location.href=('/admin/all-Employee')
+          window.location.href=('/admin/all-Shift')
         },0);
 
       })
@@ -44,30 +50,30 @@ const EditEmployee = (props) => {
             <Modal returnFocusAfterClose={focusAfterClose} isOpen={open}>
                 <ModalBody>
                   <Form>
-                    <h3 style={{color:"#e14eca", textTransform:"capitalize", fontWeight:"600"}}> Edit  Employee</h3>
+                    <h3 style={{color:"#e14eca", textTransform:"capitalize", fontWeight:"600"}}> Edit  Shift</h3>
                     <Row>
                         <Col className="pr-md-1" md="6">
                           <FormGroup>
-                            <label>First Name</label>
+                            <label>Employee ID</label>
                             <Input
                               style={{color:"black"}}
-                              name="firstName"
+                              name="employeeID"
                               onChange={changeHandler}
-                              placeholder="First Name"
+                              placeholder="Employee ID"
                               className="placeColorBlack"
-                              defaultValue={Employee.firstName}
+                              defaultValue={Shift.employeeID}
                             />
                           </FormGroup>
                         </Col>
                         <Col className="px-md-1" md="6">
                           <FormGroup>
-                            <label>Last Name</label>
+                            <label>Company ID</label>
                             <Input
-                              name="lastName"
+                              name="companyID"
                               onChange={changeHandler}
                               className="placeColorBlack"
-                              defaultValue={Employee.lastName}
-                              placeholder="Last  Name"
+                              defaultValue={Shift.companyID}
+                              placeholder="Employee ID"
                             />
                           </FormGroup>
                         </Col>
@@ -75,25 +81,25 @@ const EditEmployee = (props) => {
                     <Row>
                       <Col className="pr-md-1" md="6">
                         <FormGroup>
-                          <label>Address</label>
+                          <label>Date</label>
                           <Input
                             onChange={changeHandler}
-                            name="address"
+                            name="date"
                             className="placeColorBlack"
-                            defaultValue={Employee.address}
-                            placeholder="Address"
+                            defaultValue={Shift.date}
+                            placeholder="Date"
                           />
                         </FormGroup>
                       </Col>
                       <Col className="px-md-1" md="6">
                         <FormGroup>
-                          <label>Join Date</label>
+                          <label>Start Time </label>
                           <Input
-                            defaultValue={Employee.joinDate}
-                            name="Join Date"
+                            defaultValue={Shift.startTime}
+                            name="startTime"
                             className="placeColorBlack"
                             onChange={changeHandler}
-                            placeholder="Join Date"
+                            placeholder="Start Time"
                           />
                         </FormGroup>
                       </Col>
@@ -101,51 +107,13 @@ const EditEmployee = (props) => {
                     <Row>
                       <Col className="pr-md-1" md="6">
                         <FormGroup>
-                          <label> Expertise</label>
+                          <label> End  Time</label>
                           <Input
-                            name="expertise"
+                            name="endTime"
                             className="placeColorBlack"
-                            defaultValue={Employee.expertise}
+                            defaultValue={Shift.endTime}
                             onChange={changeHandler}
-                            placeholder="Expertise "
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="px-md-1" md="6">
-                        <FormGroup>
-                          <label>Phone Number</label>
-                          <Input
-                            className="placeColorBlack"
-                            name="phoneNumber"
-                            defaultValue={Employee.phoneNumber}
-                            onChange={changeHandler}
-                            placeholder="Phone Number"
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="px-md-1" md="6">
-                        <FormGroup>
-                          <label>Email</label>
-                          <Input
-                            className="placeColorBlack"
-                            name="email"
-                            defaultValue={Employee.email}
-                            onChange={changeHandler}
-                            placeholder="Email"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="px-md-1" md="6">
-                        <FormGroup>
-                          <label>Hourly Rate</label>
-                          <Input
-                            className="placeColorBlack"
-                            name="hourlyRate"
-                            defaultValue={Employee.hourlyRate}
-                            onChange={changeHandler}
-                            placeholder="Hourly Rate"
+                            placeholder="Start Time "
                           />
                         </FormGroup>
                       </Col>
@@ -160,4 +128,4 @@ const EditEmployee = (props) => {
         </div>
     )
 }
-export default EditEmployee
+export default EditShift

@@ -1,4 +1,5 @@
 import Add from './views/add/Add'
+import AllShift from './views/EditFlight/Shift/AllShift'
 import AllClient from './views/EditFlight/Client/AllClient'
 import AllEmployee from './views/EditFlight/Employee/AllEmployee'
 // add 
@@ -29,14 +30,13 @@ var routes = [
     component: AllEmployee,
     layout: "/admin"
   },
-  // {
-  //   path: "/invoice-generator",
-  //   name: "Invoice Generator",
-  //   rtlName: "قائمة الجدول",
-  //   icon: "tim-icons icon-tap-02",
-  //   component: GenerateInvoice,
-  //   layout: "/admin"
-  // },
+  {
+    path: "/all-shift",
+    name: "All Shift",
+    icon: "tim-icons icon-tap-02",
+    component:AllShift ,
+    layout: "/admin"
+  },
   // {
   //   path: "/flight-analytics",
   //   name: "Flight Analytics",
