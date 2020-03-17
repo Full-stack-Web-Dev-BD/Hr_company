@@ -125,7 +125,7 @@ class Employee  extends React.Component {
                       </Col>
                       <Col className="px-md-1" md="6">
                         <FormGroup>
-                          <Label for="exampleCustomFileBrowser">File Browser with Custom Label</Label>
+                          <Label for="exampleCustomFileBrowser">Select a image for profile pictuer</Label>
                           <CustomInput onChange={this.onFileChoose} type="file" id="exampleCustomFileBrowser" name="customFile" label={this.state.imageName} />
                         </FormGroup>
                       </Col>

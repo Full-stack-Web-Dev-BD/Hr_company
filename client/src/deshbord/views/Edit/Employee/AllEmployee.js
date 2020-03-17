@@ -89,7 +89,7 @@ const AllEmployee =()=>{
                           <tr style={{backgroundColor:`${single.color}`, cursor:"pointer"}} >
                             {console.log(single)}
                             <td> {single.firsName}<span> {single.lastName} </span> </td>
-                            <td > <img src={'./'+single.picturePath}/> <span>{console.log(single.picturePath)}</span> </td>
+                            <td > <img style={{maxWidth:'70px', maxHeight:'80px'}} src={require(`../../../../../uploads/${single.profilePicture}`)}/>  </td>
                             <td > {single.joinDate} </td>
                             <td > {single.phoneNumber} </td>
                             <td > <div class="dropdown">
@@ -123,3 +123,4 @@ const AllEmployee =()=>{
 }
 
 export default AllEmployee;
+// picturePath

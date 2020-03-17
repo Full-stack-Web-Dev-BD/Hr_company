@@ -50,7 +50,6 @@ const EditEmployee = (props) => {
                           <FormGroup>
                             <label>First Name</label>
                             <Input
-                              style={{color:"black"}}
                               name="firstName"
                               onChange={changeHandler}
                               placeholder="First Name"

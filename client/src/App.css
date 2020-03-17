@@ -22,3 +22,9 @@
 .flexbox-fix{
     display: none !important
 }
+
+
+.modal-content {
+    background: #25273A;
+    border: 1px solid white !important;
+}

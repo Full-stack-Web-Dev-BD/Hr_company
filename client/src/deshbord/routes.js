@@ -1,7 +1,7 @@
 import Add from './views/add/Add'
-import AllShift from './views/EditFlight/Shift/AllShift'
-import AllClient from './views/EditFlight/Client/AllClient'
-import AllEmployee from './views/EditFlight/Employee/AllEmployee'
+import AllShift from './views/Edit/Shift/AllShift'
+import AllClient from './views/Edit/Client/AllClient'
+import AllEmployee from './views/Edit/Employee/AllEmployee'
 // add 
 // all client 
 // all employee

@@ -5,10 +5,8 @@ import "assets/css/nucleo-icons.css";
 import "assets/scss/blk-design-system-react.scss?v=1.0.0";
 import "assets/demo/demo.css";
 
-import Index from "views/Index.jsx";
-// import LandingPage from "views/examples/LandingPage.jsx";
-import RegisterPage from "views/examples/RegisterPage.jsx";
-import LoginPage from "views/examples/LoginPage.jsx";
+import RegisterPage from "views/Outer/RegisterPage.jsx";
+import LoginPage from "views/Outer/LoginPage.jsx";
 
 
 

@@ -1,58 +1,6 @@
 const employeeModel = require('../model/employeeModel')
 const employeeValidator = require('../validator/employeeValidator')
-// upload image
-
-// router.post('/register',upload.single('file'), (req, res)=>{
-// 	console.log(req.body)
-// 	const {errors, isValid}=validateRegisterInput(req.body)
-// 	if(!isValid ){
-// 		return res.status(400).json(errors)
-// 	}
-// 	User.findOne({email:req.body.email})
-// 	.then(user=>{
-// 		if(user){
-// 			return res.status(400).json({email:"user  exist"})
-// 		}else{
-// 			bcrypt.hash(req.body.password, 12,((err, hash)=>{
-// 				if(err){
-// 					console.log(err)
-// 					res.status(500).json({massage:"Server error occurd "})
-// 				}else{
-// 					const day= new Date()
-// 					const dd= day.getDate()
-// 					const mm= day.getMonth()+1
-// 					const yy= day.getFullYear()
-// 					const newDate= dd+'-'+mm+'-'+yy
-// 					const newUser=  new User({
-// 						image:'',
-// 						username:req.body.username,
-// 						email:req.body.email,
-// 						role:req.body.role,
-// 						password:hash,
-// 						isApproved:req.body.isApproved,
-// 						date:newDate,
-// 						link:req.body.link
-// 					})
-// 					newUser.save()
-// 					.then(user=>{
-// 						console.log(user)
-// 						res.json({massage:"user created success full "})
-// 					})
-// 					.catch(err=>{
-// 						console.log(err)
-// 					})
-// 				}
-// 			}))
-// 		}
-// 	})
-// 	.catch(err=>{
-// 		console.log(err)
-// 		res.json({massage:"server error occurd "})
-// 	})
-// })
-
-// image upload
-
+const fs = require('fs')
 
 const createEmployee= (req, res)=>{
     console.log(req.body)
@@ -98,8 +46,19 @@ const updateEmployee=(req,res)=>{
 
 
 const deleteEmployee = (req, res)=>{
+    
+// const path = './file.txt'
+
     employeeModel.findByIdAndDelete(req.params.id)
     .then(deleted=>{
+        
+        // try {
+        //   fs.unlinkSync(`../client/uploads/${deleted.profilePicture}`)
+        //   console.log('image deleted success also ')
+        // } catch(err) {
+        //     res.status(500).json({massage:"srever error occurd"})
+        //   console.error(err)
+        // }
         return res.status(200).json({massage:" Deleted successfull" , deleted:deleted})
     })
     
