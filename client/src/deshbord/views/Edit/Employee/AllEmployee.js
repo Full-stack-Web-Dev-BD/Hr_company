@@ -78,6 +78,7 @@ const AllEmployee =()=>{
                         <tr>
                           <th>Name</th>
                           <th>Picture</th>
+                          <th>Experitise  </th>
                           <th>Join Date  </th>
                           <th>Phone Number </th>
                           <th>Action</th>
@@ -88,8 +89,9 @@ const AllEmployee =()=>{
                        return(
                           <tr style={{backgroundColor:`${single.color}`, cursor:"pointer"}} >
                             {console.log(single)}
-                            <td> {single.firsName}<span> {single.lastName} </span> </td>
+                            <td> {single.firstName}<span> {single.lastName} </span> </td>
                             <td > <img style={{maxWidth:'70px', maxHeight:'80px'}} src={require(`../../../../../uploads/${single.profilePicture}`)}/>  </td>
+                            <td > {single.expertise} </td>
                             <td > {single.joinDate} </td>
                             <td > {single.phoneNumber} </td>
                             <td > <div class="dropdown">

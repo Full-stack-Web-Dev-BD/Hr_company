@@ -16,6 +16,7 @@ const  clientSchema = new Schema ({
     expertise:String,
     companyAddress:String,
     phoneNumber:String,
+    note:[],
     color:String
 })
 

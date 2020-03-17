@@ -18,11 +18,21 @@ const createClient= (req, res)=>{
 
 
 const updateClient=(req,res)=>{
-    clientModel.findByIdAndUpdate(req.params.id, req.body)
-    .then(updated=>{
-        res.status(200).json({massage:" Updated successfull ", updateClient:updated})
+    clientModel.findById(req.params.id)
+    .then(client=>{
+        client.typeOfCompany=req.body.typeOfCompany
+        client.entrepriseName=req.body.entrepriseName
+        client.ownerFirstName=req.body.ownerFirstName
+        client.ownerlastName=req.body.ownerlastName
+        client.expertise=req.body.expertise
+        client.companyAddress=req.body.companyAddress
+        client.phoneNumber=req.body.phoneNumber
+        client.note=[req.body.note,...client.note]
+        client.save()
+        .then(updated=>{
+            res.status(200).json({massage:" Updated successfull ", updateClient:updated})
+        })
     })
-    
     .catch(err=>{
         return res.status(500).json({massage:" server error occured "})
     })

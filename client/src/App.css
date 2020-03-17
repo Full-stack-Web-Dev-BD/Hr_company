@@ -28,3 +28,8 @@
     background: #25273A;
     border: 1px solid white !important;
 }
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    padding-right: 25px;
+}

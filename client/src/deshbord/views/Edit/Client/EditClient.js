@@ -45,25 +45,24 @@ const EditClient = (props) => {
             <Modal returnFocusAfterClose={focusAfterClose} isOpen={open}>
                 <ModalBody>
                   <Form>
+                  <h3 style={{color:"#e14eca", textTransform:"capitalize", fontWeight:"600"}}> Edit  client</h3>
                     <Row>
-                      <h3 style={{color:"#e14eca", textTransform:"capitalize", fontWeight:"600"}}> Edit  client</h3>
                         <Col className="pr-md-1" md="6">
                           <FormGroup>
-                            <label>Type Of Company</label>
-                            <Input
-                              style={{color:"black"}}
-                              name="typeOfCompany"
-                              onChange={changeHandler}
-                              placeholder="Type Of Company"
-                              className="placeColorBlack"
-                              defaultValue={client.typeOfCompany}
-                            />
+                          <label>Type of company</label>
+                          <select name='typeOfCompany' onChange={changeHandler} defaultValue={client.typeOfCompany} style={{background:"#27293d"}} className="form-control">
+                            <option>Select a type</option>
+                            <option value="Snow removal">Snow removal</option>
+                            <option value="Construction"> Construction</option>
+                            <option value="Car services">Car services</option>
+                          </select>
                           </FormGroup>
                         </Col>
                         <Col className="px-md-1" md="6">
                           <FormGroup>
                             <label>Entreprise Name</label>
                             <Input
+                              style={{color:'white'}}
                               name="entrepriseName"
                               onChange={changeHandler}
                               className="placeColorBlack"
@@ -80,7 +79,8 @@ const EditClient = (props) => {
                           <Input
                             onChange={changeHandler}
                             name="ownerFirstName"
-                            className="placeColorBlack"
+                              style={{color:'white'}}
+                              className="placeColorBlack"
                             defaultValue={client.ownerFirstName}
                             placeholder="Owner First Name"
                           />
@@ -92,7 +92,8 @@ const EditClient = (props) => {
                           <Input
                             defaultValue={client.ownerlastName}
                             name="ownerlastName"
-                            className="placeColorBlack"
+                              style={{color:'white'}}
+                              className="placeColorBlack"
                             onChange={changeHandler}
                             placeholder="Owner last Name"
                           />
@@ -109,7 +110,8 @@ const EditClient = (props) => {
                             defaultValue={client.expertise}
                             onChange={changeHandler}
                             placeholder="Expertise "
-                          />
+                            style={{color:'white'}}
+                            />
                         </FormGroup>
                       </Col>
                       <Col className="px-md-1" md="6">
@@ -118,10 +120,12 @@ const EditClient = (props) => {
                           <Input
                             className="placeColorBlack"
                             name="phoneNumber"
+                            type="number"
                             defaultValue={client.phoneNumber}
                             onChange={changeHandler}
                             placeholder="Phone Number"
-                          />
+                            style={{color:'white'}}
+                            />
                         </FormGroup>
                       </Col>
                     </Row>
@@ -135,7 +139,31 @@ const EditClient = (props) => {
                             defaultValue={client.companyAddress}
                             onChange={changeHandler}
                             placeholder="Company Address"
-                          />
+                            style={{color:'white'}}
+                            />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <h6 style={{textDecoration:'underline'}}>Added Note :-</h6>
+                    {client.note.length>0?
+                    client.note.map(note=>{
+                      return(
+                      <p style={{color:"white"}}>{note}</p>
+                      )
+                    }):<p style={{color:"white"}}>Empty List !</p>
+                    }
+                    <Row>
+                      <Col className="px-md-1" md="12">
+                        <FormGroup>
+                          <label>Add More Note </label>
+                          <Input
+                            className="placeColorBlack"
+                            name="note"
+                            type="textarea"
+                            onChange={changeHandler}
+                            placeholder="Add New Note Here ..."
+                            style={{color:'white'}}
+                            />
                         </FormGroup>
                       </Col>
                     </Row>

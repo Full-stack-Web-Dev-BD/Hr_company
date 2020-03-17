@@ -1,6 +1,4 @@
 
-import logome from "./logo.png"
-
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 // nodejs library to set properties for components
@@ -57,7 +55,6 @@ class Sidebar extends React.Component {
             onClick={this.props.toggleSidebar}
           >
             <div className="logo-img">
-              <img src={logome}  />
             </div>
           </a>
         );
@@ -79,7 +76,6 @@ class Sidebar extends React.Component {
             onClick={this.props.toggleSidebar}
           >
             <div className="logo-img">
-              <img src={logo}  />
             </div>
           </Link>
         );

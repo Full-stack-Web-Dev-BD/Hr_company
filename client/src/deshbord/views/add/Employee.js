@@ -135,6 +135,7 @@ class Employee  extends React.Component {
                         <FormGroup>
                           <label>Join Date</label>
                           <Input
+                            type="date"
                             name="joinDate"
                             onChange={this.changeHandler}
                             placeholder="Join Date"
@@ -184,6 +185,7 @@ class Employee  extends React.Component {
                           <label>Hourly Rate</label>
                           <Input
                             name="hourlyRate"
+                            type="number"
                             onChange={this.changeHandler}
                             placeholder="Hourly Rate"
                           />

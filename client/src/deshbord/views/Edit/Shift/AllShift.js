@@ -77,8 +77,18 @@ const AllShift =()=>{
               <Card>
                 <CardBody>
                   <div className="allShift">
-                    <div>
+                    <div className="d-flex">
                       <h1 style={{color:"#3578E5", textTransform:"capitalize", fontWeight:"600"}}>All Shift <span style={{fontSize:"14px"}}>( All )</span></h1>
+                      <form className="ml-5">
+                        <label>Enter employee name</label>
+                        <div  className="d-flex">
+                          <input className=" ml-1 mr-3 form-control" placeholder="Enter employee name" name="employeeName"/>
+                          <button className="btn btn-sm btn-success">Search</button>
+                        </div>
+                      </form>
+                      <div style={{display:"inline-block", marginLeft:'auto'}}>
+                        <Button >Open Modal</Button>
+                      </div>
                     </div>
                     <Table className="tablesorter  pb-5 mb-5" responsive>
                       <thead className="text-success">
