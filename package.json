@@ -9,7 +9,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
-  "author": "",
+  "author": "alaminprogramer",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

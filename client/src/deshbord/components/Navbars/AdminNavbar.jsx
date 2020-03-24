@@ -36,8 +36,8 @@ class AdminNavbar extends React.Component {
     window.removeEventListener("resize", this.updateColor);
   }
   logOut=()=>{
-    window.localStorage.removeItem('asci-token')
-    window.location.href=('/login')
+    window.localStorage.removeItem('token')
+    window.location.href=('/')
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
   updateColor = () => {
@@ -112,7 +112,7 @@ class AdminNavbar extends React.Component {
             <Collapse navbar isOpen={this.state.collapseOpen}>
               <Nav className="ml-auto" navbar>
                 <InputGroup className="search-bar">
-                  <Button color="danger">Disconnect</Button>
+                  <Button onClick={this.logOut} color="danger">Disconnect</Button>
                 </InputGroup>
                 <li className="separator d-lg-none" />
               </Nav>

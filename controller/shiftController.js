@@ -79,6 +79,29 @@ const doCompleted=(req, res)=>{
         res.status(500).json({massage:"server error occurd"})
     })
 }
+const sortShift=(req, res)=>{
+    shiftModel.find()
+    .then(shifts=>{
+        let sorted=[]
+        if(req.body.text.toLowerCase()==='no sort'){
+            return res.status(200).json(shifts)
+    
+        }
+        shifts.forEach(single=>{
+            if(req.body.text.toLowerCase()==='completed' && single.completed){
+                sorted.push(single)
+            }
+            if(req.body.text.toLowerCase()==='uncompleted' && !single.completed){
+                sorted.push(single)
+            }
+        })
+        res.status(200).json(sorted)
+    })
+    .catch(err=>{
+        console.log(err)
+        res.status(500).json({massage:"Server error occurd "})
+    })
+}
 module.exports = { 
-    createShift,updateShift, deleteShift, allShift, singleShift, doCompleted
+    createShift,updateShift, deleteShift, allShift, singleShift, doCompleted,sortShift
 }

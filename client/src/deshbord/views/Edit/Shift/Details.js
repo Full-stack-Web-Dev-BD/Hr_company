@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const DeleteModal = (props) => {
+const Details = (props) => {
   const {
     buttonLabel,
     className
@@ -20,7 +20,7 @@ const DeleteModal = (props) => {
   return (
     <div>
       <p onClick={toggle}> 
-        Delete
+        Details
       </p>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>
@@ -29,17 +29,14 @@ const DeleteModal = (props) => {
           </h2>
         </ModalHeader>
         <ModalBody>
-          <h5 className="text-light">
-          Are You Sure To Delete This  Shift ?
-          </h5>
+          <h5 className="text-light">Details about this Employee Shift</h5>
         </ModalBody>
         <ModalFooter>
-          <Button color="success" onClick={deleteDone}>Delete</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
+          <Button color="secondary" onClick={toggle}>Close</Button>
         </ModalFooter>
       </Modal>
     </div>
   );
 }
 
-export default DeleteModal;
+export default Details;

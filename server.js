@@ -18,7 +18,7 @@ const shiftRouter= require('./router/shiftRouter')
 
 
 // database connection 
-mongoose.connect('mongodb://localhost/Hr_company' , {useUnifiedTopology:true, useNewUrlParser:true}, err=>{
+mongoose.connect('mongodb://localhost/Hr_company_database' , {useUnifiedTopology:true, useNewUrlParser:true}, err=>{
     if(err){
         return  console.log('Database connection failed')
     }

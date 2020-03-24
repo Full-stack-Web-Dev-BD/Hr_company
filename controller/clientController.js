@@ -71,6 +71,50 @@ const singleClient= (req, res)=>{
     })
     
 }
+const searchClient=(req, res)=>{
+    clientModel.find()
+    .then(clients=>{
+        let searched=[]
+        clients.forEach(single=>{
+            console.log(single.phoneNumber)
+            console.log(req.body.text)
+            if(req.body.text===''){
+                return res.status(200).json(clients)
+            }
+            if(single.phoneNumber===req.body.text){
+                console.log('matched')
+                searched.push(single)
+            }
+        })
+        return res.status(200).json(searched)
+    })
+    .catch(err=>{
+        console.log(err)
+        res.status(500).json({massage:'server error occurd'})
+    })
+}
+const sortClientByType=(req, res)=>{
+    let sorted=[]
+    clientModel.find()
+    .then(clients=>{
+        if(req.body.text.toLocaleLowerCase()==='no sort'){
+            return res.status(200).json(clients)
+        }
+        clients.forEach(client=>{
+            console.log(client.typeOfCompany)
+            console.log(req.body.text)
+            if(client.typeOfCompany.toLocaleLowerCase()===req.body.text.toLocaleLowerCase()){
+                console.log('added')
+                sorted.push(client)
+            }
+        })
+        res.status(200).json(sorted)
+    })
+    .catch(err=>{
+        console.log(err)
+        res.status(500).json({massage:"server error occurd"})
+    })
+}
 module.exports = { 
-    createClient,updateClient, deleteClient, allClient, singleClient
+    createClient,updateClient,deleteClient,allClient,singleClient,sortClientByType,searchClient
 }

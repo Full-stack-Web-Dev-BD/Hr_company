@@ -10,7 +10,8 @@ const  employeeSchema = new Schema ({
     email:String,
     hourlyRate:String,
     profilePicture:String,
-    picturePath:String
+    picturePath:String,
+    shiftHistory:[]
 })
 
 const employeeModel = mongoose.model('employeeModel', (employeeSchema))

@@ -29,7 +29,7 @@ const DeleteModal = (props) => {
           </h2>
         </ModalHeader>
         <ModalBody>
-          <h5 className="text-dark">
+          <h5 className="text-light">
           Are You Sure To Delete This  Client ?
           </h5>
         </ModalBody>

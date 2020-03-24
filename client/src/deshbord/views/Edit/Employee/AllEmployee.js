@@ -71,7 +71,7 @@ const AllEmployee =()=>{
                 <CardBody>
                   <div className="internationalFlight">
                     <div>
-                      <h1 style={{color:"#3578E5", textTransform:"capitalize", fontWeight:"600"}}>International Flight <span style={{fontSize:"14px"}}>( All )</span></h1>
+                      <h1 style={{color:"#3578E5", textTransform:"capitalize", fontWeight:"600"}}>All Employee <span style={{fontSize:"14px"}}>( All )</span></h1>
                     </div>
                     <Table className="tablesorter  pb-5 mb-5" responsive>
                       <thead className="text-success">
@@ -80,6 +80,7 @@ const AllEmployee =()=>{
                           <th>Picture</th>
                           <th>Experitise  </th>
                           <th>Join Date  </th>
+                          <th>ID</th>
                           <th>Phone Number </th>
                           <th>Action</th>
                         </tr>
@@ -93,6 +94,7 @@ const AllEmployee =()=>{
                             <td > <img style={{maxWidth:'70px', maxHeight:'80px'}} src={require(`../../../../../uploads/${single.profilePicture}`)}/>  </td>
                             <td > {single.expertise} </td>
                             <td > {single.joinDate} </td>
+                            <td > {single._id} </td>
                             <td > {single.phoneNumber} </td>
                             <td > <div class="dropdown">
                                 <a cla ss="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

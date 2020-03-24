@@ -11,8 +11,8 @@ import {
   Button,
   CardFooter
 } from "reactstrap";
-import deleteModal from  './DeleteModal'
 import { useEffect , useState } from "react";
+import Details from './Details'
 import Axios from "axios";
 import DeleteModal from "./DeleteModal";
 
@@ -23,9 +23,7 @@ const AllShift =()=>{
       .then(res=>{
         if(res.data.length<1){
           let ex=[
-            {ex:''},
-            {ex:''},
-            {ex:''}
+            
           ]
           console.log('done')
           return setAllShift(ex)
@@ -69,6 +67,12 @@ const AllShift =()=>{
         window.location.href='/admin/all-shift'
       })
     }
+    const sortShift=(event)=>{
+      Axios.post('http://localhost:5000/sort',{text:event.target.value})
+      .then(res=>{
+        setAllShift(res.data)
+      })
+    }
     return (
       <>
         <div className="content">
@@ -87,7 +91,12 @@ const AllShift =()=>{
                         </div>
                       </form>
                       <div style={{display:"inline-block", marginLeft:'auto'}}>
-                        <Button >Open Modal</Button>
+                        <select onChange={sortShift} className="form-control">
+                          <option style={{backgroundColor:'#27293D',color:'white'}} value="no sort">Select to sort</option>
+                          <option style={{backgroundColor:'#27293D',color:'white'}} value="Completed">Sort by Completeed</option>
+                          <option style={{backgroundColor:'#27293D',color:'white'}} value="Uncompleted">Sort by Uncompleteed</option>
+                          <option style={{backgroundColor:'#27293D',color:'white'}} value="no sort">No Sort</option>
+                        </select>
                       </div>
                     </div>
                     <Table className="tablesorter  pb-5 mb-5" responsive>
@@ -95,7 +104,7 @@ const AllShift =()=>{
                         <tr>
                           <th>Employee ID</th>
                           <th>Company ID</th>
-                          <th> Date  </th>
+                          <th>Date  </th>
                           <th>Start Time </th>
                           <th>End Time </th>
                           <th>Status</th>
@@ -106,7 +115,6 @@ const AllShift =()=>{
                         {AllShift.map((single)=>{
                        return(
                           <tr style={{backgroundColor:`${single.color}`, cursor:"pointer"}} >
-                            {console.log(single)}
                             <td> {single.employeeID}  </td>
                             <td >{single.companyID} </td>
                             <td > {single.date} </td>
@@ -127,6 +135,9 @@ const AllShift =()=>{
                                     <a class="dropdown-item "style={{color:"white" , fontSize:"18px"}} href="#" onClick={()=> doCompleted(single._id)}>{single.completed?"Uncomplete":"Completed"}</a>
                                   <a class="dropdown-item "style={{color:"white" , fontSize:"18px"}} href="#">
                                   <DeleteModal style={{display:"none"}} flight={single} deleteFunction={DeleteShift}/>
+                                  </a>
+                                  <a class="dropdown-item "style={{color:"white" , fontSize:"18px"}} href="#">
+                                  <Details style={{display:"none"}} flight={single} />
                                   </a>
                                 </div>
                               </div>
