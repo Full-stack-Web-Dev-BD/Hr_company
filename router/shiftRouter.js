@@ -1,7 +1,6 @@
 const shiftRouter= require('express').Router()
 const shiftController = require('../controller/shiftController')
 
-
 shiftRouter.post('/create-shift', shiftController.createShift)
 shiftRouter.post('/update-shift/:id',  shiftController.updateShift)
 shiftRouter.get('/delete-shift/:id', shiftController.deleteShift)

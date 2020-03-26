@@ -11,8 +11,8 @@ const  employeeSchema = new Schema ({
     hourlyRate:String,
     profilePicture:String,
     picturePath:String,
-    shiftHistory:[]
+    shiftHistory:[],
+    totalShift:Number
 })
-
 const employeeModel = mongoose.model('employeeModel', (employeeSchema))
 module.exports = employeeModel

@@ -137,7 +137,7 @@ const AllShift =()=>{
                                   <DeleteModal style={{display:"none"}} flight={single} deleteFunction={DeleteShift}/>
                                   </a>
                                   <a class="dropdown-item "style={{color:"white" , fontSize:"18px"}} href="#">
-                                  <Details style={{display:"none"}} flight={single} />
+                                  <Details style={{display:"none"}} shift={single} />
                                   </a>
                                 </div>
                               </div>

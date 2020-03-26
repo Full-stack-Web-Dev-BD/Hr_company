@@ -1,20 +1,37 @@
 const shiftModel = require('../model/shiftModel')
 const shiftValidator = require('../validator/shiftValidator')
-
+const employeeModel = require('../model/employeeModel')
 const createShift= (req, res)=>{
     const verify =shiftValidator.shiftValidator(req.body)
     if(!verify.isValid){
         return res.status(400).json(verify.err)
     }
-    new shiftModel(req.body).save()
-    .then(shift=>{
-        res.status(200).json({massage:"Shift created successfull ", Shift:shift})
+    employeeModel.findById(req.body.employeeID)
+    .then(employee=>{
+        console.log(employee)
+        if(!employee){
+           return res.status(400).json({massage:"Employee not exist , pls give currect ID of employee"})
+        }
+        employee.shiftHistory.push({...req.body})
+        employee.save()
+        .then(updated=>{
+            new shiftModel(req.body).save()
+            .then(shift=>{
+                res.status(200).json({massage:"Shift created successfull ", Shift:shift})
+            })
+            .catch(err=>{
+                console.log(err)
+                return res.status(500).json({massage:" server error occured "})
+            })
+        })
     })
     .catch(err=>{
+        console.log(err)
         return res.status(500).json({massage:" server error occured "})
     })
-    
 }
+
+
 
 
 const updateShift=(req,res)=>{

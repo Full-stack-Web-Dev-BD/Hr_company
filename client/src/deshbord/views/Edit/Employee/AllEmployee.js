@@ -1,5 +1,7 @@
 import React from "react";
 import EditEmployee from './EditEmployee'
+import ShiftModal  from './ShiftModal'
+
 import {
   Card,
   CardHeader,
@@ -18,6 +20,7 @@ import DeleteModal from "./DeleteModal";
 
 const AllEmployee =()=>{
   const [allEmployee , setallEmployee]=useState([])
+  const [Shift , setShift]=useState([])
     useEffect(()=>{
       Axios.get('http://localhost:5000/all-Employee')
       .then(res=>{
@@ -53,6 +56,20 @@ const AllEmployee =()=>{
       }
       return x
     }
+    const copy=()=>{
+      var copyTextarea = document.querySelector('.js-copytextarea');
+      copyTextarea.focus();
+      copyTextarea.select();
+
+      try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+
+        alert('Copying text command was ' + msg);
+      } catch (err) {
+        alert('Oops, unable to copy');
+      }
+    }
     const DeleteEmployee =(id)=>{
       Axios.get('http://localhost:5000/delete-employee/'+id)
       .then(flight=>{
@@ -70,8 +87,9 @@ const AllEmployee =()=>{
               <Card>
                 <CardBody>
                   <div className="internationalFlight">
-                    <div>
+                    <div className="d-flex">
                       <h1 style={{color:"#3578E5", textTransform:"capitalize", fontWeight:"600"}}>All Employee <span style={{fontSize:"14px"}}>( All )</span></h1>
+                      <ShiftModal Shift={{}}/>
                     </div>
                     <Table className="tablesorter  pb-5 mb-5" responsive>
                       <thead className="text-success">
@@ -88,13 +106,13 @@ const AllEmployee =()=>{
                       <tbody>
                         {allEmployee.map((single)=>{
                        return(
-                          <tr style={{backgroundColor:`${single.color}`, cursor:"pointer"}} >
+                          <tr onClick={copy} style={{backgroundColor:`${single.color}`, cursor:"pointer"}} >
                             {console.log(single)}
                             <td> {single.firstName}<span> {single.lastName} </span> </td>
                             <td > <img style={{maxWidth:'70px', maxHeight:'80px'}} src={require(`../../../../../uploads/${single.profilePicture}`)}/>  </td>
                             <td > {single.expertise} </td>
                             <td > {single.joinDate} </td>
-                            <td > {single._id} </td>
+                            <td className="js-copytextarea" > {single._id} </td>
                             <td > {single.phoneNumber} </td>
                             <td > <div class="dropdown">
                                 <a cla ss="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
