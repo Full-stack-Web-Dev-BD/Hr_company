@@ -14,6 +14,7 @@ const  clientSchema = new Schema ({
     ownerFirstName:String,
     ownerlastName:String,
     expertise:String,
+    shiftHistory:[],
     companyAddress:String,
     phoneNumber:String,
     note:[],

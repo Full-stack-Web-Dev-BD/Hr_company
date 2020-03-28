@@ -1,33 +1,45 @@
 const shiftModel = require('../model/shiftModel')
 const shiftValidator = require('../validator/shiftValidator')
+const clientModel=require('../model/clientModel')
 const employeeModel = require('../model/employeeModel')
 const createShift= (req, res)=>{
     const verify =shiftValidator.shiftValidator(req.body)
     if(!verify.isValid){
         return res.status(400).json(verify.err)
+
     }
-    employeeModel.findById(req.body.employeeID)
+    console.log(req.body)
+    employeeModel.findOne({_id:req.body.employeeID.split(' ')})
     .then(employee=>{
-        console.log(employee)
         if(!employee){
-           return res.status(400).json({massage:"Employee not exist , pls give currect ID of employee"})
+           return res.status(400).json({massage:"Employee not exist , pls give currect ID of employee ,Pls copy from Table"})
         }
-        employee.shiftHistory.push({...req.body})
-        employee.save()
-        .then(updated=>{
-            new shiftModel(req.body).save()
-            .then(shift=>{
-                res.status(200).json({massage:"Shift created successfull ", Shift:shift})
+        clientModel.findOne({_id:req.body.companyID})
+        .then(client=>{
+            
+            if(!client){
+                return res.status(400).json({massage:"Company  not exist , pls give currect ID of Company ,Pls copy from Table"})
+            }
+            client.shiftHistory.push({...req.body})
+            client.save()
+            .then(updatedClient=>{
+                employee.shiftHistory.push({...req.body})
+                employee.save()
+                .then(updated=>{
+                    new shiftModel(req.body).save()
+                    .then(shift=>{
+                        res.status(200).json({massage:"Shift created successfull ", Shift:shift})
+                    })
+                })
             })
             .catch(err=>{
                 console.log(err)
-                return res.status(500).json({massage:" server error occured "})
             })
         })
     })
     .catch(err=>{
         console.log(err)
-        return res.status(500).json({massage:" server error occured "})
+        return res.status(500).json({massage:" Some thing going wrong pls try later ! or refrash the page !"})
     })
 }
 

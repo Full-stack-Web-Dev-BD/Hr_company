@@ -1,6 +1,6 @@
 import React from "react";
-// import EditDemosticFlight from './EditDomesticFlightModal'
 import EditClient from './EditClient'
+import ClientDetails from './ClientDetails'
 import {
   Card,
   CardHeader,
@@ -16,6 +16,9 @@ import deleteModal from  './DeleteModal'
 import { useEffect , useState } from "react";
 import Axios from "axios";
 import DeleteModal from "./DeleteModal";
+
+
+
 const AllClient =()=>{
   const [allClient , setallClient]=useState([])
     useEffect(()=>{
@@ -130,7 +133,7 @@ const AllClient =()=>{
                               <tr style={{backgroundColor:`${single.color}`, cursor:"pointer"}} >
                                 <td > {single.typeOfCompany} </td>
                                 <td > {single.entrepriseName} </td>
-                                <td > {single.ownerFirstName} <span> {single.ownerLastName} </span> </td>
+                                <td > {single.ownerFirstName} <span> {single.ownerlastName} </span> </td>
                                 <td > {single.phoneNumber} </td>
                                 <td > <div class="dropdown">
                                     <a cla ss="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -142,6 +145,9 @@ const AllClient =()=>{
                                       </span>
                                       <a class="dropdown-item "style={{color:"white" , fontSize:"18px"}} href="#">
                                       <DeleteModal style={{display:"none"}} flight={single} deleteFunction={DeleteClient}/>
+                                      </a>
+                                      <a class="dropdown-item "style={{color:"white" , fontSize:"18px"}} href="#">
+                                      <ClientDetails  client={single} />
                                       </a>
                                     </div>
                                   </div>

@@ -1,4 +1,4 @@
-
+import SelectClient from './SelectClient'
 import React, { useState ,useEffect} from 'react';
 import { Button, Modal, ModalBody, ModalFooter,Row, Col, Label, Input, FormGroup, Form } from 'reactstrap';
 import './modal.css'
@@ -8,7 +8,7 @@ const ShiftModal = (props) => {
     const [focusAfterClose, setFocusAfterClose] = useState(true);
     const [ShiftInfo, setShiftInfo]=useState({})
     const Shift= props.Shift
-    const [doneBTN, setDoneBTN]= useState(' Done')
+    const [doneBTN, setDoneBTN]= useState('Create ')
     const [massage, setMassage]= useState('')
 
   useEffect(()=>{
@@ -44,17 +44,22 @@ const ShiftModal = (props) => {
       })
       .catch(err=>{
         setMassage(err.response.data.massage)
+        setDoneBTN('Try Again !')
+
       })
     }
     return (
         <div>
             <Form inline onSubmit={(e) => e.preventDefault()}>
-                <Button color="warning " className="ml-5" onClick={toggle}>Create Shift</Button>
+                <Button color="warning " size="sm " className="ml-5" onClick={toggle}>Create Shift</Button>
             </Form>
             <Modal returnFocusAfterClose={focusAfterClose} isOpen={open}>
                 <ModalBody>
                   <Form>
-                    <h3 style={{color:"#e14eca", textTransform:"capitalize", fontWeight:"600"}}> Create New   Shift</h3>
+                    <div className="d-flex">
+                      <h3 style={{color:"#e14eca", textTransform:"capitalize", fontWeight:"600"}}> Create New   Shift</h3>
+                      <SelectClient/>
+                    </div>
                     <Row>
                         <Col className="pr-md-1" md="6">
                           <FormGroup>
@@ -63,7 +68,7 @@ const ShiftModal = (props) => {
                               style={{color:"black"}}
                               name="employeeID"
                               onChange={changeHandler}
-                              placeholder="Employee ID"
+                              placeholder="Pls Copy Employee ID From Table"
                               className="placeColorBlack"
                               defaultValue={Shift.employeeID}
                             />
@@ -77,7 +82,7 @@ const ShiftModal = (props) => {
                               onChange={changeHandler}
                               className="placeColorBlack"
                               defaultValue={Shift.companyID}
-                              placeholder="Employee ID"
+                              placeholder="Pls Copy Company ID From Table"
                             />
                           </FormGroup>
                         </Col>
